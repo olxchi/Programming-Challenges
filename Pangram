@@ -1,0 +1,49 @@
+import java.util.*;
+import java.lang.*;
+
+public class Pangram {
+	
+	public static void main(String[] args) { // reads strings and tells user if string is a pangram
+		Scanner myscan = new Scanner(System.in);
+		int i = myscan.nextInt(); // num test cases
+		
+		List<String> alphabet = new ArrayList<String>();
+		char mychar = 'a';
+		
+		// make alphabet list, also add uppercase letters
+		for (int t = 0; t < 26; t++) {
+			alphabet.add(Character.toString(mychar));
+			mychar++;
+		}
+				
+		// for every line
+		for (int j = 0; j < i; j ++) {
+			Scanner newscanner = new Scanner(System.in);
+			String myline = newscanner.nextLine();
+			String missing = "";
+			
+			if (myline.length() == 0) {
+				System.out.println("pangram");
+				continue;
+			}
+			
+			// for every letter in alphabet
+			for (String character : alphabet) {
+				if (!(myline.contains(character) || myline.contains(character.toUpperCase()))) { // if the letter is missing from string
+					missing = missing + character; // add this letter to 'missing'
+				}
+			}
+			
+			if (missing.length() == 0) {
+				System.out.println("pangram");
+			} else {
+				System.out.println("missing " + missing);
+		} 
+				
+		}
+		
+		
+	} 
+
+
+}
